@@ -64,22 +64,22 @@ public class Trader<T> {
      *
      *       We will call this in exchangeMoney().
      */
-    public int getSellingPrice(T object){
-        if(object instanceof Tradable){
+    public int getSellingPrice(T object) {
+        if (object instanceof Tradable) {
             return ((Tradable) object).getPrice();
+        } else {
+            return Tradable.MISSING_PRICE;
         }
-        else{ return Tradable.MISSING_PRICE;
     }
 
 
+        /**
+         * Exchange money from other to this Trader according to the price of item,
+         * if other has enough money. Otherwise, returns False.
+         *
+         * @return True if the exchange was completed.
+         */
 
-
-    /**
-     * Exchange money from other to this Trader according to the price of item,
-     * if other has enough money. Otherwise, returns False.
-     *
-     * @return True if the exchange was completed.
-     */
     public boolean exchangeMoney(Trader<T> other, T item) {
         int selling_price = this.getSellingPrice(item);
         if (selling_price == Tradable.MISSING_PRICE) {
